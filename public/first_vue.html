@@ -9,6 +9,31 @@
 <body>
   <div id ="app">
     <p>{{ message }}</p>
+    <p>{{ message2 }}</p>
+    <button v-on:click="changeMsg">Change</button>
   </div>
+  <script>
+    new Vue({
+      el:"#app",
+      data() {
+        return {
+          message: "hello vue!!",
+          message2: "Hoge"
+        }
+      },
+      mounted () {
+          this.setMsg();
+        },
+        methods: {
+          setMsg: function () {
+            this.message = 'Set Message';
+          },
+          // ここから追記する
+          changeMsg: function() { // 説明 2.13
+            this.message = 'Changed Message'
+          },
+          // ここまで追記する
+        }
+      })  </script>
 </body>
 </html>
