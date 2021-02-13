@@ -57,11 +57,21 @@
               <v-text-field v-model="postLanguage" label="Language" required style='margin:20px; margin-bottom:0px; margin-left:20px'></v-text-field>
             </v-flex> <!-- 説明 3.19 -->
             <v-card-text>
+
+            <v-card-actions>
+              <v-btn color="#grey lighten-4" flat v-on:click="togglePostModal">
+                キャンセル
+              </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn color="red" flat v-on:click="postSnippet">
+                追加
+              </v-btn>
               <p>Snippet</p>
               <div style='width:100%;'>
                 <textarea style='width:100%; height:300px; background-color:#efefef; padding:3px' v-model='postContents'></textarea> <!-- 説明 3.19 -->
               </div>
-            </v-card-text>          </v-card>
+            </v-card-actions>      
+              </v-card>
         </v-dialog>
       </v-container>    </v-app>
     <script>
