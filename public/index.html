@@ -52,7 +52,16 @@
             <v-card-title class="headline red lighten-3 white--text" primary-title>
               Create Form
             </v-card-title>
-          </v-card>
+            <v-text-field v-model="postTitle" label="Snippet Title" required style='margin:20px; margin-top:30px'></v-text-field> <!-- 説明 3.19 -->
+            <v-flex d-flex>
+              <v-text-field v-model="postLanguage" label="Language" required style='margin:20px; margin-bottom:0px; margin-left:20px'></v-text-field>
+            </v-flex> <!-- 説明 3.19 -->
+            <v-card-text>
+              <p>Snippet</p>
+              <div style='width:100%;'>
+                <textarea style='width:100%; height:300px; background-color:#efefef; padding:3px' v-model='postContents'></textarea> <!-- 説明 3.19 -->
+              </div>
+            </v-card-text>          </v-card>
         </v-dialog>
       </v-container>    </v-app>
     <script>
