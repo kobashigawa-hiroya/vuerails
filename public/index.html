@@ -47,7 +47,7 @@
 
           </v-flex>
         </v-layout>
-        <v-dialog v-model="dialogPostFlag" width="800" persistent> <!-- 説明 3.18 -->
+        <v-dialog v-model="dialogPostFlag" width="800" persistent> <!-- dialogPostFlag が true の場合は表示、false の場合は非表示として Modal Window が表示 -->
           <v-card>
             <v-card-title class="headline red lighten-3 white--text" primary-title>
               Create Form
@@ -62,7 +62,8 @@
         data () {
           return {
             snippetList: [","],
-            allData:[","]
+            allData:[","],
+            dialogPostFlag: true,
           }
         },
         mounted () {
