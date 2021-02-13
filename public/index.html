@@ -121,7 +121,27 @@
             }
             );
             this.dialogPostFlag = !this.dialogPostFlag //! は否定を示す演算子です。 true の否定で false 、false の否定で true といった形でスイッチの on/off のような処理を行うことができます。
-          }
+          },
+          togglePutModal: function(id) {
+            axios.get('/snippets/' +id + '.json')
+            .then(response => {
+              this.putTitle = response.data.title
+              this.putLanguage = response.data.language
+              this.putContents = response.data.contents
+              
+            }
+            );
+            this.id = id
+            this.dialogPutFlag = !this.dialogPutFlag
+          },
+          putSnippet: function() {
+            axios.put('/snippets/' + this.id + '.json', {title:this.putTitle, language:this.putLanguage, contents:this.putContents})
+            .then(response => {
+              this.listSnippet() ;
+            }
+            );
+            this.dialogPostFlag = !this.dialogPostFlag
+          },
         }
       })
 
