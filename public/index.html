@@ -98,7 +98,19 @@
           this.allData = response.data
           this.snippetList = this.allData
         
-        })
+        }
+        );
+          },
+          togglePostModal: function() {
+            axios.post('/snippets.json', {title:this.postTitle,postLanguage:this.postLanguage,contents:this.postContents})
+            .then(response=> {
+              this.listSnippet(); //メソッド内から他のメソッドを呼び出す際にも、変数を呼び出すのと同様に this をつけて処理
+              this.postTile =""
+              this.postLanguage=""
+              this.postContents=""
+            }
+            );
+            this.dialogPostFlag = !this.dialogPostFlag //! は否定を示す演算子です。 true の否定で false 、false の否定で true といった形でスイッチの on/off のような処理を行うことができます。
           }
         }
       })
