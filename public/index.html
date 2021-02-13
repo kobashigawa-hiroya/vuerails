@@ -47,13 +47,19 @@
         <v-dialog v-model="dialogPostFlag" width="800" persistent> <!-- dialogPostFlag が true の場合は表示、false の場合は非表示として Modal Window が表示 -->
           <v-card>
             <v-card-title class="headline red lighten-3 white--text" primary-title>
-              Create Form
+              新規作成
             </v-card-title>
-            <v-text-field v-model="postTitle" label="Snippet Title" required style='margin:20px; margin-top:30px'></v-text-field> <!-- 説明 3.19 -->
+            <v-text-field v-model="postTitle" label="Snippet Title" required style='margin:20px; margin-top:30px'></v-text-field> 
             <v-flex d-flex>
               <v-text-field v-model="postLanguage" label="Language" required style='margin:20px; margin-bottom:0px; margin-left:20px'></v-text-field>
             </v-flex>
             <v-card-text>
+              <p>Snippet</p>
+              <div style='width:100%;'>
+                <textarea style='width:100%; height:300px; background-color:#efefef; padding:3px' v-model='postContents'></textarea> 
+              </div>
+              </v-card-text>
+              <v-divider></v-divider>
 
             <v-card-actions>
               <v-btn color="#grey lighten-4" flat v-on:click="togglePostModal">
@@ -63,14 +69,12 @@
               <v-btn color="red" flat v-on:click="postSnippet">
                 追加
               </v-btn>
-              <p>Snippet</p>
-              <div style='width:100%;'>
-                <textarea style='width:100%; height:300px; background-color:#efefef; padding:3px' v-model='postContents'></textarea> <!-- 説明 3.19 -->
               </div>
             </v-card-actions>      
               </v-card>
         </v-dialog>
-      </v-container>    </v-app>
+      </v-container>    
+    </v-app>
     <script>
 
       new Vue({
