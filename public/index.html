@@ -28,14 +28,18 @@
             </div>
           </v-flex>
           <v-flex xs7> <!-- v-layout 要素の下の v-flex で　xsN のように数値 N を加えることによって全体横幅の N/12 分の横幅を自動的に指定させることができます -->
-            <v-card style="margin-top:10px" v-for="snippet in snippetList"> <!-- 説明 3.11 -->
-              <v-card-title primary-title> <!-- 説明 3.11 -->
-                <h3 class="headline">Snippet Title</h3>
+            <v-card style="margin-top:10px" v-for="snippet in snippetList">
+              <v-card-title primary-title>
+                <!-- ここから編集する -->
+                <h3 class="headline"> {{ snippet.title }} </h3> <!-- 説明 3.16 -->
+                <!-- ここまで編集する -->
               </v-card-title>
-              <div style="margin: 10px 20px;">
-                <textarea style='width:100%; height:300px; background-color:#efefef; padding:3px'> hoge </textarea> <!-- 説明 3.12 -->
-              </div>           
-            <v-card-actions>
+              <div style='margin: 10px 20px;'>
+                <!-- ここから編集する -->
+                <textarea style='width:100%; height:300px; background-color:#efefef; padding:3px'> {{ snippet.contents }} </textarea>
+                <!-- ここまで編集する -->
+              </div>
+                        <v-card-actions>
               <v-btn flat color ="red">Update</v-btn>
               <v-btn flat color ="gray">Delete</v-btn>
             </v-card-actions>
@@ -50,14 +54,21 @@
         el: '#app',
         data () {
           return {
-            snippetList: [","]
+            snippetList: [","],
+            allData:[","]
           }
         },
         mounted () {
-
+          this.listSnippet();
         },
         methods: {
-
+          listSnippet: function() { // 説明 3.17
+      axios.get('/snippets.json')
+        .then(response => {
+          this.allData = response.data
+          this.snippetList = this.allData
+                    })
+          }
         }
       })
 
