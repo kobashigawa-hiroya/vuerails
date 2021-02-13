@@ -28,7 +28,7 @@
             </div>
           </v-flex>
           <v-flex xs7> <!-- v-layout 要素の下の v-flex で　xsN のように数値 N を加えることによって全体横幅の N/12 分の横幅を自動的に指定させることができます -->
-            <v-card style="margin-top:10px"> <!-- 説明 3.11 -->
+            <v-card style="margin-top:10px" v-for="snippet in snippetList"> <!-- 説明 3.11 -->
               <v-card-title primary-title> <!-- 説明 3.11 -->
                 <h3 class="headline">Snippet Title</h3>
               </v-card-title>
@@ -50,7 +50,7 @@
         el: '#app',
         data () {
           return {
-
+            snippetList: [","]
           }
         },
         mounted () {
