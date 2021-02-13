@@ -114,6 +114,14 @@
             <v-card-text>
               <p>ほんとに削除しますか？</p>
             </v-card-text>
+
+            <v-divider></v-divider>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="red" flat v-on:click="deleteSnippet()">
+                削除
+              </v-btn>
+            </v-card-actions>
           </v-card>
         </v-dialog>
           <v-card>
@@ -136,6 +144,7 @@
             putTitle: '',
             putLanguage: '',
             putContents: '',
+            dialogDeleteFlag: false,
               }
         },
         mounted () {
@@ -182,6 +191,9 @@
       );
       this.dialogPutFlag = !this.dialogPutFlag
     },
+    deleteSnippet: function() {
+      axio
+    }
           }
       })
 
