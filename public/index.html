@@ -22,7 +22,9 @@
         <v-layout> <!-- 画面の左側に 5/12, 右側には 7/12 の割合で要素の横幅を指定 -->
           <v-flex xs5> <!-- xs の代わりに sm, md, lg, xl とすることで、見ているブラウザの画面幅における画面幅割合をそれぞれ指定できるようになります -->
            <div style="margin:10px">
-            <h2>Snippets Shortcut</h2>
+            <h2>Select Language</h2>
+            <v-select v-model='language' :items="languages" label="Language" v-on:change="abstruct"></v-select> 
+                <h2>Snippets Shortcut</h2>
             <ul>
               <li v-for="snippet in snippetList"><span id='name' v-on:click="goElem(snippet.id)">[{{ snippet.language }}] {{ snippet.title }}</span></li>            </ul>
             </div>
