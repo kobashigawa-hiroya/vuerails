@@ -54,6 +54,8 @@
               新規作成
             </v-card-title>
             <v-text-field v-model="postTitle" label="Snippet Title" required style='margin:20px; margin-top:30px'></v-text-field> 
+            <v-select v-model='postLanguage' :items="languagesForEdit" label="Select from history" style='margin:20px; margin-bottom:0px;margin-left: 0px'></v-select>
+
             <v-flex d-flex>
               <v-text-field v-model="postLanguage" label="Language" required style='margin:20px; margin-bottom:0px; margin-left:20px'></v-text-field>
             </v-flex>
@@ -140,7 +142,8 @@
           return {
             snippetList: [","],
             allData:[","],
-            language:['All'],
+            languages:['All'],
+            languagesForEdit:[],
             language:'ALL',
             dialogPostFlag: false,
             postTile:"",
@@ -179,7 +182,7 @@
             );
             this.dialogPostFlag = !this.dialogPostFlag //! は否定を示す演算子です。 true の否定で false 、false の否定で true といった形でスイッチの on/off のような処理を行うことができます。
           },
-          listLanguages: function() {
+              listLanguages: function() {
       this.languages = []
       this.languagesForEdit = []
       this.languages.push('ALL')
@@ -229,6 +232,22 @@
     goTop: function() {
       document.getElementById("app").scrollIntoView(true)
     },
+    abstruct: function() {
+      if (this.language == 'ALL') { // 説明 4.4
+        this.snippetList = []
+        for (i=0;i<this.allData.length;i++) { // 説明 4.5
+          this.snippetList.push(this.allData[i]) // 説明 4.5
+        }   
+      } else if (this.language != '') { 
+        this.snippetList = []
+        for (i=0;i<this.allData.length;i++) { // 説明 4.5
+          if (this.allData[i].language == this.language) { // 説明 4.6
+            this.snippetList.push(this.allData[i]) // 説明 4.5
+          }
+        }   
+      }
+    }
+
           }
       })
 
